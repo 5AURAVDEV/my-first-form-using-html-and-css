@@ -36,15 +36,42 @@ console.log(mobile_no)
     localStorage.setItem('e-mail',document.getElementById('addr').value)
 }*/
 
+let myform=document.getElementById("myform")
+myform.addEventListener("submit",print_details)
 
 function print_details(event){
     event.preventDefault()
-    let user1={
+    let user={
         first_name:document.getElementById('fname').value,
         last_name:document.getElementById('lname').value,
         email:document.getElementById('addr').value
     }
-    let userdetails=JSON.stringify(user1)
-    localStorage.setItem(`${user1.email}`,userdetails)
-    
+    let userdetails=JSON.stringify(user)
+    localStorage.setItem(`${user.email}`,userdetails)
+
+    let x=document.getElementById("added")
+    let li=document.createElement("li")
+    li.className="newadd"
+    li.innerText=userdetails
+    let btn=document.createElement("button")
+    btn.setAttribute("type","button")
+    btn.className="xxx"
+    btn.innerText="del"
+    li.appendChild(btn)
+    x.appendChild(li)
+    btn.addEventListener("click",remove_details)
+}
+/*let a=document.getElementById("added")
+a.addEventListener("click",function (event){
+    if(event.target.className.includes("xxx")){
+        remove_details(event)
+    }
+})*/
+function remove_details(event) {
+    let b=event.target.parentElement
+    let key=b.innerText.replace("del","")
+    let detail=JSON.parse(key)
+    let k=detail.email
+    localStorage.removeItem(k)
+    b.style.display="none"
 }
