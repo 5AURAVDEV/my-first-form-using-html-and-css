@@ -45,6 +45,6 @@ function print_details(event){
         email:document.getElementById('addr').value
     }
     let userdetails=JSON.stringify(user1)
-    localStorage.setItem(`userdetails_of_${user1.last_name}`,userdetails)
+    localStorage.setItem(`${user1.email}`,userdetails)
     
 }
