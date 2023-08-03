@@ -27,11 +27,24 @@ console.log(mobile_no)
 
 
 
-function print_details(event){
+/*function print_details(event){
     event.preventDefault()
     localStorage.setItem('first_name',document.getElementById('fname').value)
     localStorage.setItem('middle_name',document.getElementById('mname').value)
     localStorage.setItem('last_name',document.getElementById('lname').value)
     localStorage.setItem('bithday_name',document.getElementById('b-day').value)
     localStorage.setItem('e-mail',document.getElementById('addr').value)
+}*/
+
+
+function print_details(event){
+    event.preventDefault()
+    let user1={
+        first_name:document.getElementById('fname').value,
+        last_name:document.getElementById('lname').value,
+        email:document.getElementById('addr').value
+    }
+    let userdetails=JSON.stringify(user1)
+    localStorage.setItem(`userdetails_of_${user1.last_name}`,userdetails)
+    
 }
